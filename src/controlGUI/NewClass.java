@@ -10,5 +10,14 @@ package controlGUI;
  * @author andres.aristizabal_m
  */
 public class NewClass {
+    private String romerochalok;
+
+    public String getRomerochalok() {
+        return romerochalok;
+    }
+
+    public void setRomerochalok(String romerochalok) {
+        this.romerochalok = romerochalok;
+    }
     
 }
