@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlGUI.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="522.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlGUI.FXMLDocumentController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+        <Button fx:id="button" layoutX="76.0" layoutY="33.0" onAction="#crearCirculo" text="Crear circulo" />
+      <Canvas fx:id="lienzo" height="421.0" layoutX="22.0" layoutY="90.0" onMouseClicked="#obtenerCoordenadas" onMouseDragged="#pintarMouse" width="749.0" />
+      <Button layoutX="183.0" layoutY="33.0" mnemonicParsing="false" onAction="#crearRectangulo" text="Crear rectangulo" />
+      <Button layoutX="342.0" layoutY="33.0" mnemonicParsing="false" onAction="#crearTriangulo" text="Crear triángulo" />
+      <Button layoutX="500.0" layoutY="33.0" mnemonicParsing="false" onAction="#crearCuadrado" text="Crear cuadrado" />
     </children>
 </AnchorPane>

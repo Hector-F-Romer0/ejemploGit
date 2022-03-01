@@ -13,7 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import modelo.Punto2D;
 
 /**
  *
@@ -29,7 +31,7 @@ public class FXMLDocumentController implements Initializable {
     
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void crearCirculo(ActionEvent event) {
         
         // Le damos un color al canva
         g.setStroke(Color.BLUE);
@@ -92,6 +94,39 @@ public class FXMLDocumentController implements Initializable {
         
     }
     
+    @FXML
+    private void obtenerCoordenadas(MouseEvent event){
+        // Obtenemos las coordenadas x y y del mouse cuando hacemos un click dentro del click
+        double x = event.getX();
+        double y = event.getY();
+        
+        Punto2D punto = new Punto2D(x, y);
+        System.out.println(punto.toString());
+        
+        g.setStroke(Color.BLUE);
+        g.setLineWidth(3);  // Grosor de la línea
+        g.strokeOval(x, y, 200, 200);
+        g.setFill(Color.CHOCOLATE);
+        g.fillOval(x, y, 200, 200);
+        
+    }
+    
+    @FXML
+    private void pintarMouse(MouseEvent event){
+        // Obtenemos las coordenadas x y y del mouse cuando hacemos un click dentro del click
+        double x = event.getX();
+        double y = event.getY();
+        
+        Punto2D punto = new Punto2D(x, y);
+        System.out.println(punto.toString());
+        
+//        g.setStroke(Color.BLUE);
+//        g.setLineWidth(3);  // Grosor de la línea
+//        g.strokeOval(x, y, 100, 100);
+        g.setFill(Color.LIGHTBLUE);
+        g.fillOval(x, y, 50, 50);
+    }
+ 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Permite indicar al graficContext que pinte en el lienzo que hemos creado
