@@ -23,6 +23,13 @@ import modelo.Punto2D;
  */
 public class FXMLDocumentController implements Initializable {
     
+    // Se definen para cualquier figura geométrica
+    double x1[];
+    double y1[];
+    // Coordenadas iniciales de x y Y
+    double coorX;
+    double coorY;
+    
     @FXML
     private Canvas lienzo;
     
@@ -60,12 +67,12 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void crearTriangulo(){
-        double x1[] = {40,450,560};
-        double y1[] = {200,100,200};
-        
-        g.setStroke(Color.CADETBLUE);
-        g.setLineWidth(2);
-        g.strokePolygon(x1, y1, 3);
+//        double x1[] = {40,450,560};
+//        double y1[] = {200,100,200};
+//        
+//        g.setStroke(Color.CADETBLUE);
+//        g.setLineWidth(2);
+//        g.strokePolygon(x1, y1, 3);
         
         
         
@@ -95,36 +102,42 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
+    private void pentagono(ActionEvent event){
+        
+    }
+    
+    @FXML
     private void obtenerCoordenadas(MouseEvent event){
-        // Obtenemos las coordenadas x y y del mouse cuando hacemos un click dentro del click
-        double x = event.getX();
-        double y = event.getY();
-        
-        Punto2D punto = new Punto2D(x, y);
-        System.out.println(punto.toString());
-        
-        g.setStroke(Color.BLUE);
-        g.setLineWidth(3);  // Grosor de la línea
-        g.strokeOval(x, y, 200, 200);
-        g.setFill(Color.CHOCOLATE);
-        g.fillOval(x, y, 200, 200);
+//        // Obtenemos las coordenadas x y y del mouse cuando hacemos un click dentro del click
+        coorX = event.getX();
+        coorY = event.getY();
+//        
+//        Punto2D punto = new Punto2D(x, y);
+//        System.out.println(punto.toString());
+//        
+//        g.setStroke(Color.BLUE);
+//        g.setLineWidth(3);  // Grosor de la línea
+//        g.strokeOval(x, y, 200, 200);
+//        g.setFill(Color.CHOCOLATE);
+//        g.fillOval(x, y, 200, 200);
+        System.out.println("El punto " + coorX +", " + coorY);
         
     }
     
     @FXML
     private void pintarMouse(MouseEvent event){
         // Obtenemos las coordenadas x y y del mouse cuando hacemos un click dentro del click
-        double x = event.getX();
-        double y = event.getY();
+        coorX= event.getX();
+        coorY = event.getY();
         
-        Punto2D punto = new Punto2D(x, y);
+        Punto2D punto = new Punto2D(coorX, coorY);
         System.out.println(punto.toString());
         
 //        g.setStroke(Color.BLUE);
 //        g.setLineWidth(3);  // Grosor de la línea
 //        g.strokeOval(x, y, 100, 100);
         g.setFill(Color.LIGHTBLUE);
-        g.fillOval(x, y, 50, 50);
+        g.fillOval(coorX, coorY, 50, 50);
     }
  
     @Override
@@ -139,10 +152,7 @@ public class FXMLDocumentController implements Initializable {
         // Le damos un color al canva
         g.setStroke(Color.AQUAMARINE);
         g.setLineWidth(3);  // Grosor de la línea
-        g.strokeRect(0, 0, largo, alto);    // Creamos un rectángulo con las coordenadas dadas
-                
-                
-                
+        g.strokeRect(0, 0, largo, alto);    // Creamos un rectángulo con las coordenadas dadas    
     }    
     
 }
