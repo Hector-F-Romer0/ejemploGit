@@ -103,6 +103,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void pentagono(ActionEvent event){
+        int r = 100;
         
     }
     
