@@ -12,7 +12,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import modelo.Punto2D;
@@ -30,9 +32,25 @@ public class FXMLDocumentController implements Initializable {
     double coorX;
     double coorY;
     
+    
+    
     @FXML
     private Canvas lienzo;
     
+    @FXML
+    private TextField txtCantidad_lados;
+    
+    @FXML
+    private Label labelRadio;
+    
+    @FXML
+    private ColorPicker colorPicker;
+    
+    @FXML
+    private Label labelNumLados;
+    
+    @FXML
+    private TextField txtRadio;
     //Permite tener todo lo necesario para pintar en el canvas
     GraphicsContext g;
     
@@ -103,7 +121,41 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void pentagono(ActionEvent event){
-        int r = 100;
+        //Obtiene el radio que el usuario escoja en un textArea.
+        int r = Integer.parseInt(txtRadio.getText());
+        
+        //Sirve para obtener el color que el usuario quiere escoger en la interfaz gráfica.
+        g.setStroke(colorPicker.getValue());
+        
+        // Obtiene el número de lados que el usuario quiere digitar en la interfaz gráfica.
+        int numLados = Integer.parseInt(txtCantidad_lados.getText());
+        
+        // Dividimos entre  2PI el número de lados que tendrá nuestro polígono regular.
+        double angulo = (2*Math.PI)/numLados;
+        // Nuestro centro estará dado por las coordenadas (k,h), donde k representará la posición en X y h la posición en Y.
+        double h = coorX;
+        double k = coorY;
+        x1 = new double[numLados];
+        y1 = new double[numLados];
+        x1[0] = h+r;
+        y1[0] = k;
+        System.out.println("Coordenada: 0" + "x: " + x1[0] + ", y: " + y1[0]);
+        
+        for (int i = numLados-1; i > 0; i--) {
+            double a = r * Math.sin(angulo * i);
+            double b = r* Math.cos(angulo*i);
+            
+            // Hallamos los catetos de un tríangulo de radio r y sumamos las distancias del centro a dichas
+            // coordenadas para ubicar un punto a teta angulos en la circunferencia
+            x1[i] = b+h;
+            y1[i] = a+k;
+            System.out.println("Coordenada: " + i + "x: " + x1[i] + "y: " + y1[i]);
+            
+        }
+        
+        // Creamos el polígono con base en las coordenadas ya halladas anteriormente.
+        g.strokePolygon(x1, y1, numLados);
+        g.setLineWidth(3);
         
     }
     
@@ -122,23 +174,24 @@ public class FXMLDocumentController implements Initializable {
 //        g.setFill(Color.CHOCOLATE);
 //        g.fillOval(x, y, 200, 200);
         System.out.println("El punto " + coorX +", " + coorY);
+       
         
     }
     
     @FXML
     private void pintarMouse(MouseEvent event){
-        // Obtenemos las coordenadas x y y del mouse cuando hacemos un click dentro del click
-        coorX= event.getX();
-        coorY = event.getY();
-        
-        Punto2D punto = new Punto2D(coorX, coorY);
-        System.out.println(punto.toString());
-        
-//        g.setStroke(Color.BLUE);
-//        g.setLineWidth(3);  // Grosor de la línea
-//        g.strokeOval(x, y, 100, 100);
-        g.setFill(Color.LIGHTBLUE);
-        g.fillOval(coorX, coorY, 50, 50);
+//        // Obtenemos las coordenadas x y y del mouse cuando hacemos un click dentro del click
+//        coorX= event.getX();
+//        coorY = event.getY();
+//        
+//        Punto2D punto = new Punto2D(coorX, coorY);
+//        System.out.println(punto.toString());
+//        
+////        g.setStroke(Color.BLUE);
+////        g.setLineWidth(3);  // Grosor de la línea
+////        g.strokeOval(x, y, 100, 100);
+//        g.setFill(Color.LIGHTBLUE);
+//        g.fillOval(coorX, coorY, 50, 50);
     }
  
     @Override
@@ -151,7 +204,7 @@ public class FXMLDocumentController implements Initializable {
         double largo = lienzo.getWidth();
         
         // Le damos un color al canva
-        g.setStroke(Color.AQUAMARINE);
+        g.setStroke(Color.BLACK);
         g.setLineWidth(3);  // Grosor de la línea
         g.strokeRect(0, 0, largo, alto);    // Creamos un rectángulo con las coordenadas dadas    
     }    

@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="522.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlGUI.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlGUI.FXMLDocumentController">
     <children>
-        <Button fx:id="button" layoutX="35.0" layoutY="21.0" onAction="#crearCirculo" text="Crear circulo" />
-      <Canvas fx:id="lienzo" height="421.0" layoutX="22.0" layoutY="90.0" onMouseClicked="#obtenerCoordenadas" onMouseDragged="#pintarMouse" width="749.0" />
-      <Button layoutX="140.0" layoutY="21.0" mnemonicParsing="false" onAction="#crearRectangulo" text="Crear rectangulo" />
-      <Button layoutX="269.0" layoutY="21.0" mnemonicParsing="false" onAction="#crearTriangulo" text="Crear triángulo" />
-      <Button layoutX="383.0" layoutY="21.0" mnemonicParsing="false" onAction="#crearCuadrado" text="Crear cuadrado" />
-      <Button layoutX="508.0" layoutY="21.0" mnemonicParsing="false" onAction="#pentagono" prefHeight="25.0" prefWidth="112.0" text="Pentagono" />
+        <Button fx:id="button" layoutX="31.0" layoutY="101.0" onAction="#crearCirculo" prefHeight="31.0" prefWidth="128.0" text="Crear circulo" />
+      <Canvas fx:id="lienzo" height="508.0" layoutX="207.0" layoutY="88.0" onMouseClicked="#obtenerCoordenadas" onMouseDragged="#pintarMouse" width="685.0" />
+      <Button layoutX="32.0" layoutY="151.0" mnemonicParsing="false" onAction="#crearRectangulo" prefHeight="31.0" prefWidth="134.0" text="Crear rectangulo" />
+      <Button layoutX="30.0" layoutY="204.0" mnemonicParsing="false" onAction="#crearTriangulo" prefHeight="31.0" prefWidth="134.0" text="Crear triángulo" />
+      <Button layoutX="30.0" layoutY="261.0" mnemonicParsing="false" onAction="#crearCuadrado" prefHeight="31.0" prefWidth="134.0" text="Crear cuadrado" />
+      <Button layoutX="30.0" layoutY="310.0" mnemonicParsing="false" onAction="#pentagono" prefHeight="31.0" prefWidth="134.0" text="Crear polígono" />
+      <TextField fx:id="txtCantidad_lados" layoutX="37.0" layoutY="391.0" prefHeight="31.0" prefWidth="58.0" />
+      <TextField fx:id="txtRadio" layoutX="37.0" layoutY="468.0" prefHeight="31.0" prefWidth="58.0" />
+      <Label fx:id="labelNumLados" layoutX="32.0" layoutY="360.0" text="Números de lados" />
+      <Label fx:id="labelRadio" layoutX="32.0" layoutY="436.0" text="Radio" />
+      <Label layoutX="266.0" layoutY="22.0" prefHeight="49.0" prefWidth="390.0" text="INTERFAZ DE CREACIÓN">
+         <font>
+            <Font name="System Bold" size="33.0" />
+         </font>
+      </Label>
+      <ColorPicker fx:id="colorPicker" layoutX="11.0" layoutY="508.0" />
     </children>
 </AnchorPane>
