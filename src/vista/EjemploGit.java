@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 /**
  *
  * @author hector_fabio.romero
+ * @author felipe.aristizabal_m
  */
 public class EjemploGit extends Application {
     

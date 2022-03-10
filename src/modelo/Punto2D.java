@@ -61,7 +61,7 @@ public class Punto2D {
 
     @Override
     public String toString() {
-        return  X + ", " + Y;
+        return  "x: " + X + ", y: " + Y;
     }
 
 }
